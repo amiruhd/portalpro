@@ -1,10 +1,11 @@
 package ir.ac.aut;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Course {
+public class Course implements Serializable {
     private String name;
     private int numberOfUnit;
     private int capacity;

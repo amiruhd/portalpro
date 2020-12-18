@@ -29,7 +29,7 @@ public class Master extends User {
     public void removeCourse() {
         Course course = getCourse();
         courses.remove(course);
-        // if need remoe from student too
+        // if need remove from student too
     }
 
     public void putGrade() {
