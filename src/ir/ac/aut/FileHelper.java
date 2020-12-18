@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileHelper implements Serializable {
+public class FileHelper implements Serializable, MyFile {
     public static final String ORDER_FILE = "orders";
     public static final String STUDENT_FILE = "students";
     public static final String MASTER_FILE = "masters";
@@ -18,13 +18,14 @@ public class FileHelper implements Serializable {
         students = new ArrayList<>();
     }
 
-
+    @Override
     public void read() {
         readObjets(MASTER_FILE, masters);
         readObjets(STUDENT_FILE, students);
         readObjets(ORDER_FILE, orders);
     }
 
+    @Override
     public void write() {
         writeObject(MASTER_FILE, masters);
         writeObject(STUDENT_FILE, students);
@@ -93,6 +94,7 @@ public class FileHelper implements Serializable {
     public void removeOrder(Order order) {
         orders.remove(order);
     }
+
     public boolean sameUserName(String userName) {
         for (Student s : students) {
             if (userName.equals(s.getUserName())) {

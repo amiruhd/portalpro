@@ -1,7 +1,7 @@
 package ir.ac.aut;
 
 public enum Day {
-    SATURDAY, SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY;
+    SATURDAY, SUNDAY, MONDAY, TUESDAY, WEDNESDAY;
 
 
     public static void showDay() {
@@ -10,8 +10,6 @@ public enum Day {
         System.out.println("3 --> " + Day.MONDAY);
         System.out.println("4 --> " + Day.TUESDAY);
         System.out.println("5 --> " + Day.WEDNESDAY);
-        System.out.println("6 --> " + Day.THURSDAY);
-        System.out.println("7 --> " + Day.FRIDAY);
     }
 
     public static Day whichDay() {
@@ -19,7 +17,7 @@ public enum Day {
         showDay();
         int choose;
         while (true) {
-            choose = Sc.nextBetWeenInt(1, 7);
+            choose = Sc.nextBetWeenInt(1, 5);
             switch (choose) {
                 case 1:
                     return Day.SATURDAY;
@@ -31,10 +29,6 @@ public enum Day {
                     return Day.TUESDAY;
                 case 5:
                     return Day.WEDNESDAY;
-                case 6:
-                    return Day.THURSDAY;
-                case 7:
-                    return Day.FRIDAY;
                 default:
             }
         }

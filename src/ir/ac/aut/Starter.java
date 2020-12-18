@@ -1,7 +1,7 @@
 package ir.ac.aut;
 
 public class Starter {
-    FileHelper file;
+    MyFile file;
 
     public Starter() {
         this.file = new FileHelper();
