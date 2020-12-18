@@ -17,7 +17,7 @@ public class Food {
     }
 
     public Food order() {
-        System.out.println("Name: ");
+        System.out.print("Name: ");
         this.name = Sc.nextLine();
         this.day = Day.whichDay();
         this.time = Time.when();

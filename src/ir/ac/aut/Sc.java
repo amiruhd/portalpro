@@ -28,12 +28,13 @@ public class Sc {
         while (true) {
             int num = SC.nextInt();
             if (num <= max && num >= min) {
+                Sc.clear();
                 return num;
             }
             System.out.println("Input should be from " + min + " to " + max);
         }
     }
-    public void clear(){
+    public static void clear(){
         SC.nextLine();
     }
 

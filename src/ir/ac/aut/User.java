@@ -1,16 +1,27 @@
 package ir.ac.aut;
 
+import java.util.List;
+
 public abstract class User {
     private String userName;
     private String password;
 
-    public void register(){
-        this.userName = Sc.nextLine();
+    public void register() {
+        while (true) {
+            System.out.print("UserName: ");
+            String newUserName = Sc.nextLine();
+            if (new Admin().sameUserName(newUserName)) {
+                continue;
+            }
+            this.userName = newUserName;
+            break;
+        }
         setPassword();
     }
 
     public void setPassword() {
         do {
+            System.out.print("Password: ");
             String newPassword = Sc.getInstance().nextLine();
             if (newPassword.length() < 8) {
                 System.out.println("Password should be longer than 8 character");
@@ -21,12 +32,19 @@ public abstract class User {
         } while (true);
     }
 
-    public void changeUserName() {
-        this.userName = Sc.getInstance().nextLine();
+    public <T extends User> void showUsers(List<T> users) {
+        for (T t : users) {
+            System.out.println(t);
+        }
+    }
+
+    public String getUserName() {
+        return userName;
     }
 
     @Override
     public String toString() {
-        return "UserName: " + userName + "Part: " + getClass().getSimpleName();
+        return "UserName: " + userName + "\tPart: " + getClass().getSimpleName();
     }
+
 }

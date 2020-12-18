@@ -9,16 +9,16 @@ public class Admin extends User {
     private List<Student> students;
     private List<Master> masters;
 
-    /**
-     * barname ghazaiy
-     * change user and password
-     * see students and masters
-     * add student and master
-     */
     public Admin() {
         orders = new ArrayList<>();
         masters = new ArrayList<>();
         students = new ArrayList<>();
+    }
+    public void showStudents(){
+        showUsers(students);
+    }
+    public void showMasters(){
+        showUsers(masters);
     }
 
     public void addStudent() {
@@ -30,6 +30,7 @@ public class Admin extends User {
                 continue;
             }
             students.add(student);
+            return;
         }
     }
 
@@ -42,6 +43,7 @@ public class Admin extends User {
                 continue;
             }
             masters.add(master);
+            return;
         }
     }
 
@@ -76,5 +78,18 @@ public class Admin extends User {
             }
         }
         // no food is registered in this time
+    }
+    public boolean sameUserName(String userName){
+        for(Student s:students){
+            if(userName.equals(s.getUserName())){
+                return true;
+            }
+        }
+        for(Master m:masters){
+            if(userName.equals(m.getUserName())){
+                return true;
+            }
+        }
+        return false;
     }
 }
