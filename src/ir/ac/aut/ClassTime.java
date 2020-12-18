@@ -1,8 +1,6 @@
 package ir.ac.aut;
 
-import java.io.Serializable;
-
-public class ClassTime implements Serializable {
+public class ClassTime {
     private Day day;
     private Hour hour;
 
