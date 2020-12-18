@@ -47,6 +47,9 @@ public class Login {
         unameLabel.setHorizontalAlignment(SwingConstants.RIGHT);
         passLabel.setHorizontalAlignment(SwingConstants.RIGHT);
         unameField = new JTextField();
+        ButtonHandler handler = new ButtonHandler();
+        unameField.addActionListener(handler);
+        unameField.addFocusListener(handler);
         passField = new JPasswordField();
 
         insidePanel2.add(unameField);
@@ -67,7 +70,7 @@ public class Login {
         insidePanel1.add(insidePanel3, BorderLayout.SOUTH);
 
         loginButton = new JButton(" LOGIN ");
-
+        loginButton.addActionListener(handler);
         ///
         LoginPanel.add(label, BorderLayout.NORTH);
         LoginPanel.add(insidePanel1, BorderLayout.CENTER);
@@ -82,6 +85,16 @@ public class Login {
     private class ButtonHandler implements ActionListener, FocusListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+            String input_username = unameField.getText();
+            String input_pwd = new String(passField.getPassword());
+            String user = "aaa";
+            String pwd = "bbb";
+            if (user.equals(pwd)) {
+                JOptionPane.showMessageDialog(login, "خوش آمدید", "Result", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(login, "رمز یا نام کاربری اشتباه است!", "Result", JOptionPane.ERROR_MESSAGE);
+            }
+
 
         }
 
