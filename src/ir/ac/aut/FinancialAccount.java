@@ -29,22 +29,18 @@ public class FinancialAccount {
         }
     }
 
-    public void withDrawl() {
+    public boolean withDrawl(double amount) {
         while (true) {
             if (check()) {
                 System.out.println("Wrong Id or Password");
                 continue;
             }
-            while (true) {
-                System.out.print("How much you want get: ");
-                double withDrawlAmount = Sc.getInstance().nextDouble();
-                if (withDrawlAmount < balance) {
-                    System.out.println("You don't have this amount of money in your account");
-                    continue;
-                }
-                balance -= withDrawlAmount;
-                return;
+            if (amount > balance) {
+                System.out.println("You don't have this amount of money in your account");
+                return false;
             }
+            balance -= amount;
+            return true;
         }
     }
 

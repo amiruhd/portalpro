@@ -60,4 +60,8 @@ public class Master extends User {
         int option = Sc.nextBetWeenInt(1, course.getStudents().size());
         return course.getStudents().get(option - 1);
     }
+
+    public List<Course> getCourses() {
+        return new ArrayList<>(courses);
+    }
 }

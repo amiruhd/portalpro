@@ -53,25 +53,4 @@ public class Admin extends User {
         }
     }
 
-    public void showOrders() {
-        Day[] days = Day.values();
-        Time[] times = Time.values();
-        for (Day day : days) {
-            for (Time time : times) {
-                showOrder(day, time);
-            }
-        }
-    }
-
-    private void showOrder(Day day, Time time) {
-        Order order = new Order(day, time);
-        for (Order f : file.getOrders()) {
-            if (f.equals(order)) {
-                System.out.println(f);
-                break;
-            }
-        }
-        // no food is registered in this time
-    }
-
 }
