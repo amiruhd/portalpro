@@ -1,35 +1,29 @@
 package ir.ac.aut;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
-
 public class Admin extends User {
-    private List<Food> orders;
-    private List<Student> students;
-    private List<Master> masters;
+    private FileHelper file;
 
-    public Admin() {
-        orders = new ArrayList<>();
-        masters = new ArrayList<>();
-        students = new ArrayList<>();
+    public Admin(FileHelper file) {
+        this.file = file;
     }
-    public void showStudents(){
-        showUsers(students);
+
+    public void showStudents() {
+        showUsers(file.getStudents());
     }
-    public void showMasters(){
-        showUsers(masters);
+
+    public void showMasters() {
+        showUsers(file.getMasters());
     }
 
     public void addStudent() {
         while (true) {
             Student student = new Student();
-            student.register();
-            if (students.contains(student)) {
+            student.register(file);
+            if (file.getStudents().contains(student)) {
                 System.out.println("Student is already registered");
                 continue;
             }
-            students.add(student);
+            file.addStudent(student);
             return;
         }
     }
@@ -37,24 +31,24 @@ public class Admin extends User {
     public void addMaster() {
         while (true) {
             Master master = new Master();
-            master.register();
-            if (masters.contains(master)) {
+            master.register(file);
+            if (file.getMasters().contains(master)) {
                 System.out.println("Master is already registered");
                 continue;
             }
-            masters.add(master);
+            file.addMaster(master);
             return;
         }
     }
 
     public void addOrder() {
         while (true) {
-            Food food = new Food().order();
-            if (orders.contains(food)) {
+            Order order = new Order().order();
+            if (file.getOrders().contains(order)) {
                 System.out.println("This time is already registered");
                 continue;
             }
-            orders.add(food);
+            file.addOrder(order);
             return;
         }
     }
@@ -70,26 +64,14 @@ public class Admin extends User {
     }
 
     private void showOrder(Day day, Time time) {
-        Food food = new Food(day, time);
-        for (Food f : orders) {
-            if (f.equals(food)) {
+        Order order = new Order(day, time);
+        for (Order f : file.getOrders()) {
+            if (f.equals(order)) {
                 System.out.println(f);
                 break;
             }
         }
         // no food is registered in this time
     }
-    public boolean sameUserName(String userName){
-        for(Student s:students){
-            if(userName.equals(s.getUserName())){
-                return true;
-            }
-        }
-        for(Master m:masters){
-            if(userName.equals(m.getUserName())){
-                return true;
-            }
-        }
-        return false;
-    }
+
 }

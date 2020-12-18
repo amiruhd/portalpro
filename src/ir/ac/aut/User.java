@@ -1,16 +1,17 @@
 package ir.ac.aut;
 
+import java.io.Serializable;
 import java.util.List;
 
-public abstract class User {
+public abstract class User implements Serializable {
     private String userName;
     private String password;
 
-    public void register() {
+    public void register(FileHelper fileHelper) {
         while (true) {
             System.out.print("UserName: ");
             String newUserName = Sc.nextLine();
-            if (new Admin().sameUserName(newUserName)) {
+            if (fileHelper.sameUserName(newUserName)) {
                 continue;
             }
             this.userName = newUserName;

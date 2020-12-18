@@ -1,22 +1,23 @@
 package ir.ac.aut;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Food {
+public class Order implements Serializable {
     public String name;
     public Day day;
     public Time time;
 
-    public Food() {
+    public Order() {
 
     }
 
-    public Food(Day day, Time time) {
+    public Order(Day day, Time time) {
         this.day = day;
         this.time = time;
     }
 
-    public Food order() {
+    public Order order() {
         System.out.print("Name: ");
         this.name = Sc.nextLine();
         this.day = Day.whichDay();
@@ -32,8 +33,8 @@ public class Food {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Food food = (Food) o;
-        return day == food.day && time == food.time;
+        Order order = (Order) o;
+        return day == order.day && time == order.time;
     }
 
     @Override
