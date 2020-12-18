@@ -7,7 +7,6 @@ public class Sc {
     public static final Scanner SC = new Scanner(System.in);
 
     private Sc() {
-
     }
 
     public static Scanner getInstance() {
